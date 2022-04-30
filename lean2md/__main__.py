@@ -1,7 +1,7 @@
 import os
 import sys
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 def build_blocks(lines):
     reading_lean_code = True
@@ -18,6 +18,7 @@ def build_blocks(lines):
             blocks.append({"content" : content.strip(), "is_code" : True})
             reading_lean_code = False
             content = line.split("/-!" if line.startswith("/-!") else "/-")[-1]
+            content += "\n"
             if line.endswith("-/"):
                 reading_lean_code = True
                 content = content.split("-/")[0]
