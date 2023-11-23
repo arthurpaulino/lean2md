@@ -18,7 +18,7 @@ namespace Sample --#
 etc etc.
 -/
 
-/- Some doc -/
+/-- Some doc comment -/
 def one := 1
 
 /-!
@@ -40,9 +40,8 @@ A markdown file like this one will be created (inside `<md_tgt_dir>`):
 
 etc etc.
 
-Some doc
-
 ```lean
+/-- Some doc comment -/
 def one := 1
 ```
 
