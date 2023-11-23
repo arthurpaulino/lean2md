@@ -48,7 +48,7 @@ def merge_blocks(blocks):
 
 
 def lean_file_2_md(filename):
-    lines = open(filename, "r").readlines()
+    lines = open(file=filename, mode="r", encoding="utf-8").readlines()
     blocks = build_blocks(lines)
     return merge_blocks(blocks)
 
@@ -67,6 +67,6 @@ if __name__ == "__main__":
         if not filename.endswith(".lean"):
             continue
         tgt_filename = tgt + filename.split("/")[-1].split(".lean")[0] + ".md"
-        f = open(tgt_filename, "w")
+        f = open(file=tgt_filename, mode="w", encoding="utf-8")
         f.write(lean_file_2_md(src + filename))
         f.close()
