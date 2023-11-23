@@ -8,6 +8,10 @@ A Python package that converts Lean files into markdown.
 For a Lean file (inside `<lean_src_dir>`) like this:
 
 ```lean
+import Mathlib.Tactic --#
+
+namespace Sample --#
+
 /-!
 # Title
 
@@ -25,6 +29,8 @@ def one := 1
 -/
 
 def two := 2
+
+end Sample --#
 ```
 
 A markdown file like this one will be created (inside `<md_tgt_dir>`):
@@ -49,3 +55,5 @@ def one := 1
 def two := 2
 ```
 ````
+
+Note that lines ending in `--#` (without trailing white spaces) are ignored by lean2md.

@@ -9,6 +9,8 @@ def build_blocks(lines):
     content = ""
     for i, line_n in enumerate(lines):
         line = line_n.split("\n")[0]
+        if line.endswith("--#"):
+            continue
         if line.startswith("/-"):
             if not reading_lean_code:
                 raise RuntimeError(
