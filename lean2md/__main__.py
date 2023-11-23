@@ -11,7 +11,7 @@ def build_blocks(lines):
         line = line_n.split("\n")[0]
         if line.endswith("--#"):
             continue
-        if line.startswith("/-"):
+        if line.startswith("/-") and not line.startswith("/--"):
             if not reading_lean_code:
                 raise RuntimeError(
                     "Nested lean commentary sections not allowed in:\n" +
@@ -26,7 +26,7 @@ def build_blocks(lines):
                 content = content.split("-/")[0]
                 blocks.append({"content" : content.strip(), "is_code" : False})
                 content = ""
-        elif line.endswith("-/"):
+        elif line.endswith("-/") and not reading_lean_code:
             content += line.split("-/")[0]
             reading_lean_code = True
             blocks.append({"content" : content.strip(), "is_code" : False})
